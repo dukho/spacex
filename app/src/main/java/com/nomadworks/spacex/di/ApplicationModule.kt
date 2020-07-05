@@ -2,6 +2,9 @@ package com.nomadworks.spacex.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.nomadworks.spacex.resource.ResourceQuery
+import com.nomadworks.spacex.resource.ResourceQueryImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

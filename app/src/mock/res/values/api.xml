@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base_host">https://api.spacexdata.com/</string>
+    <string name="base_path">v4/</string>
+    <string name="api_id">MOCK</string>
+</resources>
