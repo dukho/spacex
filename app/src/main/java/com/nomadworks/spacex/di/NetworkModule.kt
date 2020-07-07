@@ -14,6 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @InstallIn(ApplicationComponent::class)
 @Module
@@ -23,6 +24,7 @@ class NetworkModule {
         const val HEADER_USER_AGENT = "User-Agent"
     }
 
+    @Singleton
     @Provides
     fun provideSpacexService(retrofit: Retrofit): SpacexService {
         return retrofit.create(SpacexService::class.java)
