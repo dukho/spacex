@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class SpacexRepositoryImpl(private val spacexService: SpacexService): SpacexRepository {
-    override suspend fun fetchLatestLaunch(): Result<Launch, ApiError> {
+    override suspend fun fetchLatestLaunchResult(): Result<Launch, ApiError> {
         return try {
             withContext(Dispatchers.IO){
                 val response = spacexService.getLatestLaunchResponse()
@@ -24,6 +24,12 @@ class SpacexRepositoryImpl(private val spacexService: SpacexService): SpacexRepo
             }
         } catch (t: Throwable) {
             ApiError(t.toString()).Failure()
+        }
+    }
+
+    override suspend fun fetchLatestLaunch(): Launch {
+        return withContext(Dispatchers.IO){
+            spacexService.getLatestLaunch()
         }
     }
 }

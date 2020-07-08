@@ -5,5 +5,6 @@ import com.nomadworks.spacex.api.model.error.ApiError
 import com.nomadworks.spacex.types.Result
 
 interface SpacexRepository {
-    suspend fun fetchLatestLaunch(): Result<Launch, ApiError>
+    suspend fun fetchLatestLaunchResult(): Result<Launch, ApiError>
+    suspend fun fetchLatestLaunch(): Launch
 }
