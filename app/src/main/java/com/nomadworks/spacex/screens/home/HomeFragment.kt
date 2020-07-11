@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.nomadworks.spacex.R
 import com.nomadworks.spacex.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +42,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             when (val action = wrapper?.getContentIfNotHandled()) {
                 is HomeAction.MoveToLatestLaunch -> {
                     Timber.d("[spacex] Latest !!")
+                    findNavController().navigate(R.id.action_homeFragment_to_latestLaunchFragment)
                 }
             }
         })

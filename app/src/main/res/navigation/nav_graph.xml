@@ -18,5 +18,5 @@
         android:id="@+id/latestLaunchFragment"
         android:name="com.nomadworks.spacex.screens.latestlaunch.LatestLaunchFragment"
         android:label="latest_launch_fragment"
-        tools:layout="@layout/latest_launch_fragment" />
+        tools:layout="@layout/fragment_latest_launch" />
 </navigation>
