@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion compile_sdk_version
@@ -112,7 +113,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutine_version"
 
     // DI
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_viewmodel"
 
     // Logging
     implementation "com.jakewharton.timber:timber:$timber_version"
@@ -141,6 +143,8 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     kapt "androidx.lifecycle:lifecycle-compiler:$arch_lifecycle_version"
     kapt "androidx.room:room-compiler:$room_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
     kaptAndroidTest "com.google.dagger:dagger-android-processor:$dagger_version"
 

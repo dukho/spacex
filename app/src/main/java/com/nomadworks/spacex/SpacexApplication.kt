@@ -1,8 +1,10 @@
 package com.nomadworks.spacex
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class SpacexApplication : Application() {
     override fun onCreate() {
         super.onCreate()
