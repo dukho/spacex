@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.nomadworks.spacex.screens.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_latestLaunchFragment"
+            app:destination="@id/latestLaunchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/latestLaunchFragment"
+        android:name="com.nomadworks.spacex.screens.latestlaunch.LatestLaunchFragment"
+        android:label="latest_launch_fragment"
+        tools:layout="@layout/latest_launch_fragment" />
 </navigation>
