@@ -2,8 +2,9 @@ package com.nomadworks.spacex.screens.home
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -23,8 +24,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private var viewBinding: FragmentHomeBinding? = null
 
+
+    private fun setTitle() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.run {
+            title = getString(R.string.app_name)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setTitle()
 
         Timber.d("[spacex] onViewCreated() sharedPreferences = $sharedPreferences /  viewModel = $viewModel")
 

@@ -10,7 +10,7 @@ import timber.log.Timber
 class LatestLaunchViewModel @ViewModelInject constructor(
     private val spacexRepository: SpacexRepository,
     @Assisted private val state: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
 
     init {
         Timber.d("[spacex] latest viewmodel got spacexRepository => $spacexRepository / state => $state")
@@ -25,6 +25,7 @@ class LatestLaunchViewModel @ViewModelInject constructor(
     private val _viewState = MutableLiveData<MainViewState>().apply {
         value = viewStateSnapshot
     }
+
     private fun postMainViewState(viewState: MainViewState) {
         viewStateSnapshot = viewState
         _viewState.postValue(viewStateSnapshot)
@@ -35,26 +36,34 @@ class LatestLaunchViewModel @ViewModelInject constructor(
 
     fun fetchLatest() {
         Timber.d("[spacex] FETCH!")
-        postMainViewState(viewStateSnapshot.copy(
-            showLoadingSpinner = true,
-            result = ""
-        ))
+        postMainViewState(
+            viewStateSnapshot.copy(
+                showLoadingSpinner = true,
+                result = ""
+            )
+        )
 
         viewModelScope.launch {
             val result = kotlin.runCatching {
                 spacexRepository.fetchLatestLaunch()
             }
-            postMainViewState(viewStateSnapshot.copy(
-                showLoadingSpinner = false
-            ))
+            postMainViewState(
+                viewStateSnapshot.copy(
+                    showLoadingSpinner = false
+                )
+            )
             result.onSuccess {
-                postMainViewState(viewStateSnapshot.copy(
-                    result = "On Success:\n\n$it"
-                ))
+                postMainViewState(
+                    viewStateSnapshot.copy(
+                        result = "On Success:\n\n$it"
+                    )
+                )
             }.onFailure {
-                postMainViewState(viewStateSnapshot.copy(
-                    result = "On Failure:\n\n$it"
-                ))
+                postMainViewState(
+                    viewStateSnapshot.copy(
+                        result = "On Failure:\n\n$it"
+                    )
+                )
             }
         }
 
