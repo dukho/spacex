@@ -105,12 +105,22 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$arch_lifecycle_extensions_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$arch_lifecycle_extensions_version"
     implementation "androidx.core:core-ktx:$ktx_version"
+
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ktx_version"
 
+    // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutine_version"
+
+    // Nav - Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Dynamic Feature Module Support with Nav
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
     // DI
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -137,6 +147,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "com.jakewharton.rxrelay2:rxrelay:$rxrelay_version"
     implementation "com.tomasznajda.ktx:rxjava2:$rxjavaktx_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Annotation processor
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
@@ -155,6 +166,8 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 }
 
 def static appVersionCode() {

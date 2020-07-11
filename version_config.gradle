@@ -22,6 +22,9 @@ ext {
     arch_lifecycle_version = '2.1.0'
     arch_lifecycle_extensions_version = '2.2.0'
 
+    // Navigation
+    nav_version = '2.3.0'
+
     // Room
     room_version = '2.2.5'
 
@@ -35,7 +38,7 @@ ext {
     timber_version = '4.7.1'
 
     // Network
-    retrofit2_version = '2.6.0'
+    retrofit2_version = '2.8.1'
     okhttp_version = '4.0.0'
     gson_version = '2.7'
 
