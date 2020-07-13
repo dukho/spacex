@@ -1,4 +1,4 @@
-package com.nomadworks.spacex.screens
+package com.nomadworks.spacex.screens.latestlaunch
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
@@ -7,12 +7,13 @@ import com.nomadworks.spacex.repository.SpacexRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class MainViewModel @ViewModelInject constructor(
+class LatestLaunchViewModel @ViewModelInject constructor(
     private val spacexRepository: SpacexRepository,
-    @Assisted private val state: SavedStateHandle): ViewModel() {
+    @Assisted private val state: SavedStateHandle
+) : ViewModel() {
 
     init {
-        Timber.d("[spacex] viewmodel got spacexRepository => $spacexRepository / state => $state")
+        Timber.d("[spacex] latest viewmodel got spacexRepository => $spacexRepository / state => $state")
     }
 
     data class MainViewState(
@@ -24,6 +25,7 @@ class MainViewModel @ViewModelInject constructor(
     private val _viewState = MutableLiveData<MainViewState>().apply {
         value = viewStateSnapshot
     }
+
     private fun postMainViewState(viewState: MainViewState) {
         viewStateSnapshot = viewState
         _viewState.postValue(viewStateSnapshot)
@@ -32,29 +34,36 @@ class MainViewModel @ViewModelInject constructor(
     // this is exposed to viewbinding
     val viewState: LiveData<MainViewState> = _viewState
 
-
     fun fetchLatest() {
         Timber.d("[spacex] FETCH!")
-        postMainViewState(viewStateSnapshot.copy(
-            showLoadingSpinner = true,
-            result = ""
-        ))
+        postMainViewState(
+            viewStateSnapshot.copy(
+                showLoadingSpinner = true,
+                result = ""
+            )
+        )
 
         viewModelScope.launch {
             val result = kotlin.runCatching {
                 spacexRepository.fetchLatestLaunch()
             }
-            postMainViewState(viewStateSnapshot.copy(
-                showLoadingSpinner = false
-            ))
+            postMainViewState(
+                viewStateSnapshot.copy(
+                    showLoadingSpinner = false
+                )
+            )
             result.onSuccess {
-                postMainViewState(viewStateSnapshot.copy(
-                    result = "On Success:\n\n$it"
-                ))
+                postMainViewState(
+                    viewStateSnapshot.copy(
+                        result = "On Success:\n\n$it"
+                    )
+                )
             }.onFailure {
-                postMainViewState(viewStateSnapshot.copy(
-                    result = "On Failure:\n\n$it"
-                ))
+                postMainViewState(
+                    viewStateSnapshot.copy(
+                        result = "On Failure:\n\n$it"
+                    )
+                )
             }
         }
 
