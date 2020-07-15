@@ -1,4 +1,4 @@
-package com.nomadworks.spacex.api.model
+package com.nomadworks.spacex.api.model.launch
 
 import com.google.gson.annotations.SerializedName
 

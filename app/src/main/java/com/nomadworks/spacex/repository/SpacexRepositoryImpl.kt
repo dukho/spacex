@@ -1,7 +1,7 @@
 package com.nomadworks.spacex.repository
 
 import com.nomadworks.spacex.api.SpacexService
-import com.nomadworks.spacex.api.model.Launch
+import com.nomadworks.spacex.api.model.launch.Launch
 import com.nomadworks.spacex.api.model.error.ApiError
 import com.nomadworks.spacex.types.Failure
 import com.nomadworks.spacex.types.Result
