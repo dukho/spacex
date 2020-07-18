@@ -21,7 +21,7 @@ jobs:
         env:
           releaseKeyPass: ${{ secrets.PROD_KEY_PASS }}
           encodedCert:  ${{ secrets.PROD_CERT_ENCODED }}
-        run: echo $releaseKeyPass; echo $encodedCert
+        run: echo 'Starting check'; echo '$releaseKeyPass'; echo '$encodedCert'; echo 'This is end of check'
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Unit test with Gradle
