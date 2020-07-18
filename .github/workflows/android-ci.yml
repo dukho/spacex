@@ -17,5 +17,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Getting config
+        env:
+          releaseKeyPass: ${{ secrets.PROD_KEY_PASS }}
+          encodedCert:  ${{ secrets.PROD_CERT_ENCODED }}
+        run: echo $releaseKeyPass; echo $encodedCert
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
       - name: Unit test with Gradle
         run: ./gradlew testMockDebug --stacktrace
