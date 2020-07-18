@@ -21,7 +21,6 @@ jobs:
         env:
           releaseKeyPass: ${{ secrets.PROD_KEY_PASS }}
           encodedCert:  ${{ secrets.PROD_CERT_ENCODED }}
-      - name: Check config
         run: echo $releaseKeyPass; echo $encodedCert
       - name: Make gradlew executable
         run: chmod +x ./gradlew
