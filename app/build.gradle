@@ -46,11 +46,25 @@ android {
             buildConfigField("String", "API_KEY", "\"key-prod\"")
         }
     }
-
+    signingConfigs {
+        release {
+            keyAlias 'release'
+            keyPassword project.hasProperty('releaseKeyPass') ? project.properties['releaseKeyPass'] : System.getenv('releaseKeyPass')
+            storeFile file('nomadProd.keystore')
+            storePassword project.hasProperty('releaseKeyPass') ? project.properties['releaseKeyPass'] : System.getenv('releaseKeyPass')
+        }
+        debug {
+            keyAlias 'test'
+            keyPassword 'nomadTest123'
+            storeFile file('nomadDebug.keystore')
+            storePassword 'nomadTest123'
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
