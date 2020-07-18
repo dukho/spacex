@@ -2,9 +2,9 @@ name: Android Build
 
 on:
   push:
-    branches: [ build*, release* ]
+    branches: [ build*, build/*, release*, release/* ]
   pull_request:
-    branches: [ build*, release* ]
+    branches: [ build*, build/*, release*, release/* ]
 
 jobs:
   buildartifact:
@@ -19,8 +19,18 @@ jobs:
           java-version: 1.8
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-      - name: Getting config
+      - name: Getting config for signing and build
         env:
           releaseKeyPass: ${{ secrets.PROD_KEY_PASS }}
-          encodedCert:  ${{ secrets.PROD_CERT_ENCODED }}
-        run: echo 'Starting check'; echo $releaseKeyPass; echo $encodedCert; echo 'This is end of check'
+          encodedCert: ${{ secrets.PROD_CERT_GPG }}
+          decodePass: ${{ secrets.PROD_CERT_GPG_PASS }}
+        run: |
+          echo 'Starting fetch cert'
+          ./gradlew apkFileName -Pflavor=prod -PbuildType=debug
+          chmod +x ./app/savecert.sh
+          ./gradlew saveCert --stacktrace
+          echo "${{ secrets.PROD_CERT_GPG }}" > nomadProd.keystore.asc
+          gpg -d --passphrase "${{ secrets.PROD_CERT_GPG_PASS }}" --batch nomadProd.keystore.asc > app/nomadProd.keystore
+          echo 'Save done'
+          ./gradlew assembleProdRelease
+          echo 'Build done'

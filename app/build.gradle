@@ -200,6 +200,14 @@ task apkFileName {
     group = 'Build'
     description = 'Produces a apk file name with given flavor and buildType (ex: ./gradlew apkFileName -Pflavor=prod -PbuildType=debug)'
     doLast {
-        print(generateOutputFileName(flavor, buildType))
+        println(generateOutputFileName(flavor, buildType))
+        println(System.getenv('releaseKeyPass'))
     }
+}
+
+task saveCert(type: Exec) {
+    group = 'Build'
+    description = 'Save cert file'
+    workingDir = '.'
+    commandLine = './savecert.sh'
 }
