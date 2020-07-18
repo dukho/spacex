@@ -1,0 +1,72 @@
+{
+  "fairings": {
+    "reused": null,
+    "recovery_attempt": true,
+    "recovered": true,
+    "ships": []
+  },
+  "links": {
+    "patch": {
+      "small": null,
+      "large": null
+    },
+    "reddit": {
+      "campaign": "https://www.reddit.com/r/spacex/comments/gzeshn/gps_iii_sv03_launch_campaign_thread/",
+      "launch": "https://www.reddit.com/r/spacex/comments/hi5hit/rspacex_gps_iii_sv03_columbus_official_launch/",
+      "media": "https://www.reddit.com/r/spacex/comments/hiq0vd/rspacex_gps_iii_sv03_media_thread_photographer/",
+      "recovery": "https://www.reddit.com/r/spacex/comments/hjendd/gps_iii_svo3_recovery_thread/"
+    },
+    "flickr": {
+      "small": [],
+      "original": [
+        "https://live.staticflickr.com/65535/50065947228_804efe6117_o.jpg",
+        "https://live.staticflickr.com/65535/50065947263_e1a6ea1e22_o.jpg",
+        "https://live.staticflickr.com/65535/50065947218_88ef29951a_o.jpg",
+        "https://live.staticflickr.com/65535/50066762457_8c92090037_o.jpg"
+      ]
+    },
+    "presskit": null,
+    "webcast": "https://youtu.be/6zr0nfG3Xy4",
+    "youtube_id": "6zr0nfG3Xy4",
+    "article": "https://spaceflightnow.com/2020/06/30/spacex-launches-its-first-mission-for-u-s-space-force/",
+    "wikipedia": "https://en.wikipedia.org/wiki/GPS_Block_III"
+  },
+  "static_fire_date_utc": null,
+  "static_fire_date_unix": null,
+  "tbd": false,
+  "net": false,
+  "window": null,
+  "rocket": "5e9d0d95eda69973a809d1ec",
+  "success": true,
+  "failures": [],
+  "details": "SpaceX will launch GPS Block III Space Vehicle 03 from SLC-40, Cape Canaveral AFS aboard a Falcon 9. GPS III is owned and operated by the US Air Force and produced by Lockheed Martin. This is the third GPS III satellite and the second launched by SpaceX. The satellite will be delivered into a MEO transfer orbit. The booster for this mission is expected to land on an ASDS.",
+  "crew": [],
+  "ships": [],
+  "capsules": [],
+  "payloads": [
+    "5eb0e4d2b6c3bb0006eeb25c"
+  ],
+  "launchpad": "5e9e4501f509094ba4566f84",
+  "auto_update": true,
+  "flight_number": 97,
+  "name": "GPS III SV03 (Columbus)",
+  "date_utc": "2020-06-30T19:55:00.000Z",
+  "date_unix": 1593546900,
+  "date_local": "2020-06-30T15:55:00-04:00",
+  "date_precision": "hour",
+  "upcoming": false,
+  "cores": [
+    {
+      "core": "5ef670f10059c33cee4a826c",
+      "flight": 1,
+      "gridfins": true,
+      "legs": true,
+      "reused": false,
+      "landing_attempt": true,
+      "landing_success": true,
+      "landing_type": "ASDS",
+      "landpad": "5e9e3033383ecbb9e534e7cc"
+    }
+  ],
+  "id": "5eb87d4affd86e000604b38b"
+}
