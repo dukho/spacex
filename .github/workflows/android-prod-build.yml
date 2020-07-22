@@ -39,14 +39,14 @@ jobs:
           encodedCert: ${{ secrets.PROD_CERT_GPG }}
           decodePass: ${{ secrets.PROD_CERT_GPG_PASS }}
         run: |
-          echo 'Getting artifact file name'
-          ./gradlew apkFileName -Pflavor=prod -PbuildType=debug
-          chmod +x ./app/savecert.sh
-          ./gradlew saveCert --stacktrace
-
           echo 'Starting fetch cert'
           echo "${{ secrets.PROD_CERT_GPG }}" > nomadProd.keystore.asc
           gpg -d --passphrase "${{ secrets.PROD_CERT_GPG_PASS }}" --batch nomadProd.keystore.asc > app/nomadProd.keystore
           echo 'Save done'
           ./gradlew assembleProdRelease
           echo 'Build done'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: built-artifact
+          path: app/build/outputs/apk/prod/
+
