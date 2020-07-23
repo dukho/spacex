@@ -35,6 +35,12 @@ android {
             buildConfigField("String", "API_KEY", "\"key-dev\"")
         }
 
+        uat {
+            dimension "environment"
+            applicationIdSuffix = ".uat"
+            buildConfigField("String", "API_KEY", "\"key-uat\"")
+        }
+
         mock {
             dimension "environment"
             applicationIdSuffix = ".mock"
