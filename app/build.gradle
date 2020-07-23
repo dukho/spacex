@@ -35,6 +35,12 @@ android {
             buildConfigField("String", "API_KEY", "\"key-dev\"")
         }
 
+        uat {
+            dimension "environment"
+            applicationIdSuffix = ".uat"
+            buildConfigField("String", "API_KEY", "\"key-uat\"")
+        }
+
         mock {
             dimension "environment"
             applicationIdSuffix = ".mock"
@@ -200,6 +206,15 @@ task apkFileName {
     group = 'Build'
     description = 'Produces a apk file name with given flavor and buildType (ex: ./gradlew apkFileName -Pflavor=prod -PbuildType=debug)'
     doLast {
-        print(generateOutputFileName(flavor, buildType))
+        println(generateOutputFileName(flavor, buildType))
+        println(System.getenv('releaseKeyPass'))
+        new File(projectDir, "artifact_name.txt").text = generateOutputFileName(flavor, buildType)
     }
+}
+
+task saveCert(type: Exec) {
+    group = 'Build'
+    description = 'Save cert file'
+    workingDir = '.'
+    commandLine = './savecert.sh'
 }
